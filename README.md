@@ -23,7 +23,6 @@ Pré-requisitos: Java 17+, Maven, Node 18.19+ (ou 20+), MongoDB/mongosh (só par
 cd loja-api
 mvn spring-boot:run
 ```
-Ou abra a pasta `loja-api` no IntelliJ/Eclipse/VS Code como projeto Maven e rode `LojaApplication`.
 
 Teste: http://localhost:8080/api/categorias e http://localhost:8080/api/produtos
 Console do banco: http://localhost:8080/h2-console (JDBC URL `jdbc:h2:mem:lojadb`, usuário `sa`, senha vazia)
