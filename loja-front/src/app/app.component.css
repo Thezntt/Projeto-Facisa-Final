@@ -1,0 +1,5 @@
+.navbar { background: #1e293b; padding: 12px 24px; display: flex; gap: 20px; align-items: center; }
+.brand { color: #38bdf8; font-weight: bold; margin-right: auto; }
+.navbar a { color: #cbd5e1; text-decoration: none; font-weight: bold; padding: 6px 10px; border-radius: 6px; }
+.navbar a.ativo, .navbar a:hover { background: #334155; color: #fff; }
+.conteudo { padding: 24px; max-width: 1000px; margin: 0 auto; }

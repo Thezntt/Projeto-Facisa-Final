@@ -1,0 +1,9 @@
+com\projeto\loja\repository\ProdutoRepository.class
+com\projeto\loja\service\CategoriaService.class
+com\projeto\loja\LojaApplication.class
+com\projeto\loja\entity\Produto.class
+com\projeto\loja\repository\CategoriaRepository.class
+com\projeto\loja\controller\ProdutoController.class
+com\projeto\loja\service\ProdutoService.class
+com\projeto\loja\controller\CategoriaController.class
+com\projeto\loja\entity\Categoria.class

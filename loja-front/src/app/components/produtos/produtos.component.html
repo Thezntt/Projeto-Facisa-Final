@@ -1,0 +1,47 @@
+<h2>{{ editandoId ? 'Editar Produto' : 'Novo Produto' }}</h2>
+
+<div class="erro" *ngIf="erro">{{ erro }}</div>
+
+<form (ngSubmit)="salvar()">
+  <input type="text" [(ngModel)]="produtoForm.nome" name="nome" placeholder="Nome do Produto" required />
+  <input type="number" [(ngModel)]="produtoForm.preco" name="preco" placeholder="Preço" step="0.01" min="0" required />
+  <input type="number" [(ngModel)]="produtoForm.estoque" name="estoque" placeholder="Estoque" min="0" required />
+  <input type="text" [(ngModel)]="produtoForm.categoriaNome" name="categoriaNome" placeholder="Categoria"
+         list="listaCategorias" required />
+  <datalist id="listaCategorias">
+    <option *ngFor="let c of categorias" [value]="c.nome"></option>
+  </datalist>
+
+  <button type="submit">{{ editandoId ? 'Atualizar (PUT)' : 'Cadastrar (POST)' }}</button>
+  <button type="button" class="neutro" *ngIf="editandoId" (click)="limparFormulario()">Cancelar</button>
+</form>
+
+<h3>Lista de Produtos (GET ALL)</h3>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Preço</th>
+      <th>Estoque</th>
+      <th>Categoria</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of produtos">
+      <td>{{ item.id }}</td>
+      <td>{{ item.nome }}</td>
+      <td>{{ item.preco | currency:'BRL':'symbol':'1.2-2' }}</td>
+      <td>{{ item.estoque }}</td>
+      <td>{{ item.categoriaNome }}</td>
+      <td>
+        <button (click)="prepararEdicao(item)">Editar</button>
+        <button class="perigo" (click)="excluir(item.id)">Excluir (DELETE)</button>
+      </td>
+    </tr>
+    <tr *ngIf="produtos.length === 0">
+      <td colspan="6">Nenhum produto cadastrado.</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,42 @@
+<h2>{{ editandoId ? 'Editar Categoria' : 'Nova Categoria' }}</h2>
+
+<div class="erro" *ngIf="erro">{{ erro }}</div>
+
+<form (ngSubmit)="salvar()">
+  <input type="text" [(ngModel)]="categoriaForm.nome" name="nome" placeholder="Nome da Categoria" required />
+  <input type="text" [(ngModel)]="categoriaForm.setor" name="setor" placeholder="Setor" required />
+  <label>
+    <input type="checkbox" [(ngModel)]="categoriaForm.ativa" name="ativa" /> Ativa
+  </label>
+
+  <button type="submit">{{ editandoId ? 'Atualizar (PUT)' : 'Cadastrar (POST)' }}</button>
+  <button type="button" class="neutro" *ngIf="editandoId" (click)="limparFormulario()">Cancelar</button>
+</form>
+
+<h3>Lista de Categorias (GET ALL)</h3>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Setor</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cat of categorias">
+      <td>{{ cat.id }}</td>
+      <td>{{ cat.nome }}</td>
+      <td>{{ cat.setor }}</td>
+      <td>{{ cat.ativa ? 'Ativa' : 'Inativa' }}</td>
+      <td>
+        <button (click)="prepararEdicao(cat)">Editar</button>
+        <button class="perigo" (click)="excluir(cat.id)">Excluir (DELETE)</button>
+      </td>
+    </tr>
+    <tr *ngIf="categorias.length === 0">
+      <td colspan="5">Nenhuma categoria cadastrada.</td>
+    </tr>
+  </tbody>
+</table>
